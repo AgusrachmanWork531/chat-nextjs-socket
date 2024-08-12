@@ -1,0 +1,19 @@
+@import '@/styles/colors.scss';
+
+.error {
+    color: map-get($schema, dark);
+    font-size: 1rem;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: map-get($schema , white );
+    &__image {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
