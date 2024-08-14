@@ -1,0 +1,10 @@
+@import '@/styles/colors.scss';
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: map-get($schema, light );
+    flex-direction: column;
+}

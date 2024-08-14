@@ -1,30 +1,26 @@
 import Link from "next/link";
 import styles from './Navnar.module.css'
+import { useAuth } from '../../../../helper/AuthContext'
 
 
 const Navbar = () => {
+
+    const { logout } = useAuth();
+
+    const handleLogout = () => {
+        logout()
+    }
+
     return (
         <nav className={styles.Navbar}>
-        <ul>
-        <li>
-            <Link href="/auth/login">Login |</Link>
-            </li>
-            <li>
-            <Link href="/">Home </Link>
-            </li>
-            <li>
-            <Link href="/products">Products </Link>
-            </li>
-            <li>
-            <Link href="/nested-routing/nested-1">Nested 1 </Link>
-            </li>
-            <li>
-            <Link href="/nested-routing/nested-2">Nested 2 </Link>
-            </li>
-            <li>
-            <Link href="/shop">Multiple Slug </Link>
-            </li>
-        </ul>
+            <ul>
+                <li style={{ borderRight: '1px solid' }}>
+                    <Link href="/auth/login" onClick={handleLogout}>Logout</Link>
+                </li>
+                <li>
+                    <Link href="/">Home </Link>
+                </li>
+            </ul>
         </nav>
     );
 }

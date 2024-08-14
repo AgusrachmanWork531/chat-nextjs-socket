@@ -5,11 +5,13 @@
     padding: 1rem 2rem;
     background: rgb(var(--background-rgb));
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
   }
   
   .Navbar ul {
     display: flex;
     list-style: none;
-    gap: 1rem;
+  }
+
+  .Navbar ul > li {
+   padding: 0 1rem;
   }
