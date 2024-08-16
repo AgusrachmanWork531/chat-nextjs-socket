@@ -1,0 +1,21 @@
+@import '@/styles/colors.scss';
+
+.basicButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    background-color: map-get($schema, success);
+    color: map-get($schema, light);
+    transition: background-color 0.3s;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.basicButton:hover {
+    background-color: map-get($schema, successHover);
+}

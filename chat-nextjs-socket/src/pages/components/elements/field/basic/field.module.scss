@@ -1,0 +1,23 @@
+@import '@/styles/colors.scss';
+
+
+
+.basicField {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.basicField label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.basicField input {
+    padding: 10px;
+    border: 1px solid map-get($schema, darkWithOpacity);
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+}

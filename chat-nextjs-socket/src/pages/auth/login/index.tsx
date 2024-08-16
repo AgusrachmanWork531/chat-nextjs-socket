@@ -1,13 +1,9 @@
 
-import Link from "next/link";
 import { useRouter } from 'next/router';
-import styles from './Login.module.scss';
-import Head from "next/head";
 import { AuthPayload } from "@/pages/api/users/domain";
 import { useEffect, useState } from "react";
 import { useAuth } from '../../../helper/AuthContext'
-import { ResponseAPI } from "@/pages/api/users/domain";
-
+import LoginView from '../../view/Login';
 
 
 const LoginPage = () => {
@@ -16,6 +12,8 @@ const LoginPage = () => {
     const { login, isAuthenticated } = useAuth();
     const [isLoading, setLoading] = useState(false)
     const [isError, setError] = useState("")
+    const [isUsername, serUsername] = useState("")
+    const [isPassword, serPassword] = useState("")
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -27,8 +25,8 @@ const LoginPage = () => {
         setLoading(true);
 
         const payload: AuthPayload = {
-            userName: 'user-testing',
-            password: 'user-testing-2024'
+            userName: isUsername,
+            password: isPassword
         };
 
         try {
@@ -58,24 +56,26 @@ const LoginPage = () => {
         }
     };
 
+    const handleField = (event: React.ChangeEvent<HTMLInputElement>) => {
 
-    return (
-        <div className={styles.WrapperLoginPage}>
+        setError("");
 
-            <Head>
-                <title>Login Page</title>
-            </Head>
-            <h1 className=" text-3xl font-bold">Login Page</h1>
-            <button style={{ padding: '5px', border: '1px solid black', borderRadius: '5px', backgroundColor: 'ThreeDFace' }} onClick={handleLogin}>Action Login</button>
-            <p>You don`t have account ? Please click <Link className="Default-Link" href="/auth/register">Register</Link></p>
-            {
-                isLoading ? <p className="text-red-500">Process Login...</p> : null
-            }
-            {
-                isError ? <p className="text-red-500">{isError}</p> : null
-            }
-        </div>
+        if (event.target.name === 'username') {
+            serUsername(event.target.value)
+        }
+        if (event.target.name === 'password') {
+            serPassword(event.target.value)
+        }
+    };
+
+    return (<LoginView
+        handleLogin={handleLogin}
+        handleField={handleField}
+        isLoading={isLoading}
+        isError={isError}
+    />
     );
+
 }
 
 export default LoginPage;
